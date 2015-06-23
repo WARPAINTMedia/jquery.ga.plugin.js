@@ -1,3 +1,10 @@
+/*!
+ * jquery.ga.plugin.js - simple jquery plugin wrapper around the google analytics window.ga function
+ * @version v0.0.1
+ * @link https://github.com/WARPAINTMedia/jquery.ga.plugin.js
+ * @license MIT
+ * @copyright (c) 6/23/2015
+ */
 (function($) {
 
   $.fn.ga = function(options, callback) {
