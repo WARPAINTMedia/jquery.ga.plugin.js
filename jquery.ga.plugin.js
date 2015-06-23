@@ -13,8 +13,8 @@
     $.fn.ga.defaults = {
       eventCategory: 'button',
       eventAction: 'click',
-      eventLabel: null,
-      eventValue: null,
+      eventLabel: false,
+      eventValue: false,
       development: false
     };
 
@@ -38,11 +38,20 @@
     this.on(opts.eventAction, function(event) {
       var $this = $(this);
       // use the default, or try using the name of the element, is there a data-label attribute?, well it's nothing
-      opts.eventLabel = opts.eventLabel || $this.attr('data-label') || $this[0].name || null;
+      opts.eventLabel = $this.attr('data-label') || $this[0].name || opts.eventLabel || false;
+      // dont send empty labels
+      if (!opts.eventLabel) {
+        delete opts.eventLabel;
+      }
       // use the default, or try using the value of the element, is there a data-value attribute?, well it's nothing
-      opts.eventValue = opts.eventValue || $this.attr('data-value') || $this.val() || null;
-      // use the default, or try using the value of the element, is there a data-value attribute?, well it's nothing
-      opts.eventCategory = $this.attr('data-category') || $this.attr('type') || $this.prop('tagName') || opts.eventCategory || null;
+      opts.eventValue = $this.attr('data-value') || $this.val() || opts.eventValue || false;
+      // value is supposed to be a positive integer, and only set if there is a label
+      opts.eventValue = parseInt(opts.eventValue, 10);
+      if (typeof(opts.eventLabel) === 'undefined' || isNaN(opts.eventValue) || opts.eventValue < 0) {
+        delete opts.eventValue;
+      }
+      // use the default, or try using the value of the element, is there a data-value attribute?, it cant be empty
+      opts.eventCategory = $this.attr('data-category') || $this.attr('type') || $this.prop('tagName') || opts.eventCategory || 'action';
       // handle development case
       if (opts.development) {
         console.log('send', opts);

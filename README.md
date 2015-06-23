@@ -27,8 +27,6 @@ Results
 ga('send', {
   eventAction: "click",
   eventCategory: "button", // this is default, it is not pulled from the button type
-  eventLabel: null,
-  eventValue: null,
   hitType: "event"
 });
 ```
@@ -57,8 +55,6 @@ console.log('send', {
   development: true,
   eventAction: "click",
   eventCategory: "button",
-  eventLabel: null,
-  eventValue: null,
   hitType: "event"
 });
 ```
@@ -82,7 +78,6 @@ ga('send', {
   eventAction: "click",
   eventCategory: "button",
   eventLabel: "my-label",
-  eventValue: "hello",
   hitType: "event"
 });
 ```
@@ -92,7 +87,7 @@ ga('send', {
 Setup
 
 ```html
-<button type="button" value="1" name="submit" data-label="Data Label" data-value="Event Fired" data-category="grey-button">Fire An Event</button>
+<button type="button" value="1" name="submit" data-label="Data Label" data-value="10" data-category="grey-button">Fire An Event</button>
 ```
 
 ```javascript
@@ -106,7 +101,7 @@ ga('send', {
   eventAction: "click",
   eventCategory: "grey-button",
   eventLabel: "Data Label",
-  eventValue: "Event Fired",
+  eventValue: 10, // value is expected to be a positive int
   hitType: "event"
 });
 ```
@@ -132,7 +127,6 @@ ga('send', {
   eventAction: "mouseover",
   eventCategory: "button",
   eventLabel: "my-label",
-  eventValue: "hello",
   hitType: "event"
 });
 ```
@@ -154,12 +148,12 @@ $('input').ga({
 Results
 
 ```javascript
-// this is what is called if you click on the input and pressed the "a" key
+// this is what is called if you click on the input and pressed the "1" key
 ga('send', {
   eventAction: "input",
   eventCategory: "text",
   eventLabel: "search",
-  eventValue: "a",
+  eventValue: 1, // only positive int is passed
   hitType: "event"
 });
 ```
@@ -185,7 +179,6 @@ ga('send', {
   eventAction: "mouseover",
   eventCategory: "button",
   eventLabel: "my-label",
-  eventValue: "hello",
   hitType: "event"
 });
 ```
@@ -202,8 +195,7 @@ Setup
 $('button').ga({
   eventAction: "mouseover",
   eventCategory: "button",
-  eventLabel: "my-label",
-  eventValue: "hello"
+  eventLabel: "my-label"
 }, function() {
   console.log('event fired');
 });
@@ -216,7 +208,6 @@ ga('send', {
   eventAction: "mouseover",
   eventCategory: "button",
   eventLabel: "my-label",
-  eventValue: "hello",
   hitType: "event"
 });
 ```
