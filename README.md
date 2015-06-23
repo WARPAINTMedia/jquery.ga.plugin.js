@@ -1,7 +1,7 @@
 jquery.ga.plugin.js
 ====================
 
-This is a simple jQuery plugin wrapper around `window.ga`. It tries to be smart and simple to make life easier. You can pass custom properties and set custom attributes on elements if you want to be fancy.
+This is a simple jQuery plugin wrapper around `window.ga`. It tries to be smart and simple to make life easier. You can pass custom properties and set custom attributes on elements if you want to be fancy. This only works with "Universal Analytics".
 
 **NOTE:** *If the window.ga object is not found, the plugin will automatically switch to development mode.*
 
@@ -211,3 +211,8 @@ ga('send', {
   hitType: "event"
 });
 ```
+
+### More Analytics Details
+
+Please check out the [
+Event Tracking Web Tracking analyticsjs](https://developers.google.com/analytics/devguides/collection/analyticsjs/events) page.
