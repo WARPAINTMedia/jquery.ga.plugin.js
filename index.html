@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery GA Plugin</title>
+</head>
+<body>
+  <h2>Testing</h2>
+  <button type="button" value="1" name="submit" data-label="Data Label" data-value="Event Fired" data-category="grey-button">Fire An Event</button>
+  <input type="text" name="search" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="jquery.ga.plugin.js" type="text/javascript" charset="utf-8"></script>
+  <script>
+    // there is no window.ga function, so these will all be forced into development mode and logged to the console.
+    jQuery(document).ready(function($) {
+      $('button').ga({
+        eventAction: 'mouseover'
+      }, function() {
+        console.log('next');
+      });
+
+      $('input').ga({
+        eventAction: 'input'
+      }, function() {
+        console.log('next');
+      });
+    });
+  </script>
+</body>
+</html>
