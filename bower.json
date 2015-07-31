@@ -1,0 +1,28 @@
+{
+  "name": "jquery-ga-plugin",
+  "version": "0.0.1",
+  "homepage": "https://github.com/WARPAINTMedia/jquery.ga.plugin.js",
+  "authors": [
+    "james2doyle <james2doyle@gmail.com>"
+  ],
+  "description": "A jQuery plugin wrapper around the Google Analytics ga object",
+  "main": "jquery.ga.plugin.min.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "jquery",
+    "google",
+    "analytics",
+    "ga",
+    "plugin"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
