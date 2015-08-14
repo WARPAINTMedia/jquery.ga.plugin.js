@@ -54,15 +54,19 @@
       opts.eventCategory = $this.attr('data-category') || $this.attr('type') || $this.prop('tagName') || opts.eventCategory || 'action';
       // handle development case
       if (opts.development) {
+        opts.hitCallback = callback;
         console.log('send', opts);
+        if (callback && typeof(callback) === 'function') {
+          callback.call(this);
+        }
       } else {
         // dont send alien props
         delete opts.development;
+        // there be callbacks, use the native hitCallback feature
+        if (callback && typeof(callback) === 'function') {
+          opts.hitCallback = callback;
+        }
         ga('send', opts);
-      }
-      // there be callbacks
-      if (callback && typeof(callback) === 'function') {
-        callback.call(this);
       }
     });
 
